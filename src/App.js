@@ -7,10 +7,13 @@ import { Grid } from "semantic-ui-react";
 
 import Homepage from "./components/Homepage/Homepage";
 import Locations from "./components/Locations/Locations";
+import Inventory from "./components/Inventory/Inventory";
+
+import { fetchAllCars } from "./store/cars/actions";
+import { fetchAllLocations } from "./store/locations/actions";
 
 class App extends React.Component {
   componentDidMount() {
-    // API CALL FUNCTIONS EXECUTE ON MOUNT, SET DATA TO REDUX STORE STATE
     this.props.fetchAllCars();
     this.props.fetchAllLocations();
   }
@@ -21,8 +24,8 @@ class App extends React.Component {
         <div className="App">
           <Grid.Column>
             <Switch>
-              <Route path="/" component={Homepage} />
-              {/* <Route path="/inventory" component={Inventory} /> */}
+              <Route exact path="/" component={Homepage} />
+              <Route path="/inventory" component={Inventory} />
               <Route path="/locations" component={Locations} />
             </Switch>
           </Grid.Column>
