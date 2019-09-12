@@ -16,20 +16,23 @@ const LocationItem = ({ location }) => (
           <List.Icon name="map marker alternate" />
           <List.Content>{location.address}</List.Content>
         </List.Item>
-        <List.Item>
-          <List.Icon name="edit" />
-          <List.Content>Edit</List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Icon name="delete" />
-          <List.Content>Delete</List.Content>
-        </List.Item>
       </List>
     </Card.Content>
     <Card.Content extra>
-      <a>
-        <Icon name="car" /># of cars for sale
-      </a>
+      <List>
+        <List.Item>
+          <List.Icon name="car" />
+          <List.Content>View Inventory</List.Content>
+        </List.Item>
+        <List.Item>
+          <List.Icon name="edit" />
+          <List.Content>Edit Location</List.Content>
+        </List.Item>
+        <List.Item>
+          <List.Icon name="delete" />
+          <List.Content>Delete Location</List.Content>
+        </List.Item>
+      </List>
     </Card.Content>
   </Card>
 );

@@ -20,8 +20,7 @@ const Locations = props => {
         style={{
           minHeight: 700,
           padding: "1em 0em",
-          backgroundImage: `url(${Mazda})`,
-          boxShadow: "inset 0px -15px 20px 10px rgba(255,255,255,1)"
+          backgroundImage: `url(${Mazda})`
         }}
         vertical
       >
