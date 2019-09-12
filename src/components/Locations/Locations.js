@@ -5,6 +5,7 @@ import LocationList from "./LocationList";
 import { TopNav } from "../layout/TopNav";
 import { Footer } from "../layout/Footer";
 import Mazda from "../Homepage/mazda.jpg";
+import LocationForm from "./LocationForm";
 
 const Locations = props => {
   const containerStyle = {
@@ -25,12 +26,13 @@ const Locations = props => {
         vertical
       >
         <TopNav></TopNav>
-        <Container style={containerStyle}>
-          <Header as="h1">Locations</Header>
-          <button onClick={props.history.goBack}>Back</button>
-          <LocationList></LocationList>
-        </Container>
       </Segment>
+      <Container style={containerStyle}>
+        <Header as="h1">Locations</Header>
+        <button onClick={props.history.goBack}>Back</button>
+        <LocationList></LocationList>
+      </Container>
+      <LocationForm></LocationForm>
       <Footer />
     </div>
   );

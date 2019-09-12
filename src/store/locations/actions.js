@@ -30,6 +30,7 @@ export const addLocation = newLocation => async dispatch => {
       type: types.ADD_LOCATION_SUCCESS,
       payload: response.data
     });
+    console.log("add location success", response.data);
   } catch (err) {
     dispatch({
       type: types.ADD_LOCATION_FAILED,
