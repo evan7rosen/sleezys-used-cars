@@ -12,22 +12,22 @@ import NewCarForm from "./NewCarForm";
 class Inventory extends React.Component {
   state = {
     addCar: false,
-    query: ""
+    query: "",
+    selectedLocationId: { id: 0 }
   };
 
   addCarClick = () => {
     this.setState({ addCar: !this.state.addCar });
   };
 
+  selectLocationClick = locationId => {
+    this.setState({ selectedLocationId: locationId });
+    console.log("click", this.state.selectedLocationId);
+  };
+
   handleSearch = query => {
     this.setState({ query: query });
     console.log(this.state.query);
-  };
-
-  containerStyle = {
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    borderRadius: "8px",
-    padding: "20px"
   };
 
   render() {
@@ -53,14 +53,18 @@ class Inventory extends React.Component {
         <Grid.Row>
           <Grid.Column width={2}>
             <InventorySideNav
-              addLocationClick={this.addLocationClick}
+              addCarClick={this.addCarClick}
               handleSearch={this.handleSearch}
+              selectLocationClick={this.selectLocationClick}
             ></InventorySideNav>
           </Grid.Column>
           <Grid.Column width={14}>
             <Container style={this.containerStyle}>
               {!this.state.addLocation ? (
-                <CarList query={this.state.query}></CarList>
+                <CarList
+                  query={this.state.query}
+                  selectedLocationId={this.state.selectedLocationId}
+                ></CarList>
               ) : (
                 <NewCarForm></NewCarForm>
               )}

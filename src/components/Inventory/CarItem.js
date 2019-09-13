@@ -7,6 +7,7 @@ const CarItem = props => {
   const carLocation = props.locations.all.filter(
     location => location.id === props.car.location_id
   )[0];
+
   return (
     <Item>
       <Item.Image src={imgSrc} />
@@ -23,7 +24,7 @@ const CarItem = props => {
         </Item.Description>
         <Item.Extra>
           <Button primary floated="right">
-            Buy tickets
+            Purchase this Vehicle
             <Icon name="right chevron" />
           </Button>
           <Label icon="map marker" content={carLocation.name} />

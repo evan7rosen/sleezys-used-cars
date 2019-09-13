@@ -17,39 +17,68 @@ class InventorySideNav extends Component {
         <Menu.Header>Locations</Menu.Header>
         <Menu.Menu>
           <Menu.Item
+            name="All Locations"
+            active={activeItem === "All Locations"}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick({ id: 0 });
+            }}
+          ></Menu.Item>
+          <Menu.Item
             name="Digiprint Motors"
             active={activeItem === "Digiprint Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(1);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Exosis Motors"
             active={activeItem === "Exosis Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(2);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Conjurica Motors"
             active={activeItem === "Conjurica Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(3);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Pulze Motors"
             active={activeItem === "Pulze Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(4);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Kidstock Motors"
             active={activeItem === "Kidstock Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(5);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Zilladyne Motors"
             active={activeItem === "Zilladyne Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(6);
+            }}
           ></Menu.Item>
           <Menu.Item
             name="Geofarm Motors"
             active={activeItem === "Geofarm Motors"}
-            onClick={this.handleItemClick}
+            onClick={(e, name) => {
+              this.handleItemClick(e, name);
+              this.props.selectLocationClick(7);
+            }}
           ></Menu.Item>
         </Menu.Menu>
         <Menu.Item
@@ -57,7 +86,7 @@ class InventorySideNav extends Component {
           active={activeItem === "newCar"}
           onClick={(e, name) => {
             this.handleItemClick(e, name);
-            this.props.addLocationClick();
+            this.props.addCarClick();
           }}
         >
           Add New Car
