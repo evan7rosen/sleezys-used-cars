@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Label, Menu } from "semantic-ui-react";
+import { Input, Menu } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 class InventorySideNav extends Component {
@@ -13,38 +13,59 @@ class InventorySideNav extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu vertical style={{ marginTop: "20px" }}>
+      <Menu vertical style={{ padding: "20px" }}>
+        <Menu.Header>Locations</Menu.Header>
+        <Menu.Menu>
+          <Menu.Item
+            name="Digiprint Motors"
+            active={activeItem === "Digiprint Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Exosis Motors"
+            active={activeItem === "Exosis Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Conjurica Motors"
+            active={activeItem === "Conjurica Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Pulze Motors"
+            active={activeItem === "Pulze Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Kidstock Motors"
+            active={activeItem === "Kidstock Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Zilladyne Motors"
+            active={activeItem === "Zilladyne Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+          <Menu.Item
+            name="Geofarm Motors"
+            active={activeItem === "Geofarm Motors"}
+            onClick={this.handleItemClick}
+          ></Menu.Item>
+        </Menu.Menu>
         <Menu.Item
-          name="locations"
-          active={activeItem === "locations"}
-          onClick={this.handleItemClick}
-        >
-          <Label color="teal">{this.props.locations.all.length}</Label>
-          Locations
-        </Menu.Item>
-
-        <Menu.Item
-          name="newLocation"
-          active={activeItem === "newLocation"}
+          name="newCar"
+          active={activeItem === "newCar"}
           onClick={(e, name) => {
             this.handleItemClick(e, name);
             this.props.addLocationClick();
           }}
         >
-          Add New Location
-        </Menu.Item>
-
-        <Menu.Item
-          name="editLocation"
-          active={activeItem === "editLocation"}
-          onClick={this.handleItemClick}
-        >
-          Edit Location
+          Add New Car
         </Menu.Item>
         <Menu.Item>
           <Input
             icon="search"
-            placeholder="Search locations..."
+            placeholder="Search cars..."
             onChange={e => this.props.handleSearch(e.target.value)}
           />
         </Menu.Item>

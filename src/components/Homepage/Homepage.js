@@ -23,7 +23,7 @@ const Homepage = props => {
         <TopNav history={props.history} />
         <HomepageHeader />
       </Segment>
-      <Segment style={{ padding: "8em 0em" }} vertical>
+      <Segment style={{ padding: "2em 0em" }} vertical>
         <Container text>
           <Header as="h3" style={{ fontSize: "2em" }}>
             Quality Cars

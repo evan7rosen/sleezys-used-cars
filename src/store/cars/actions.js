@@ -12,6 +12,7 @@ export const fetchAllCars = () => async dispatch => {
       type: types.FETCH_ALL_CARS_SUCCESS,
       payload: response.data
     });
+    console.log("fetch cars", response.data);
   } catch (err) {
     dispatch({
       type: types.FETCH_ALL_CARS_FAILED,
