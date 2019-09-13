@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { HomepageHeader } from "./HomepageHeader";
 import { Footer } from "../layout/Footer";
 import { TopNav } from "../layout/TopNav";
-import Mazda from "./mazda.jpg";
+import Mazda from "./mazda2.jpg";
 
 const Homepage = props => {
   console.log("Homepage props", props);
@@ -14,7 +14,7 @@ const Homepage = props => {
         inverted
         textAlign="center"
         style={{
-          minHeight: 700,
+          minHeight: 600,
           padding: "1em 0em",
           backgroundImage: `url(${Mazda})`
         }}

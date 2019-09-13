@@ -16,7 +16,7 @@ const InventoryHeader = () => (
     />
     <Header
       as="h2"
-      content="Arizona's Repo Specialists"
+      content="Vehicle Inventory"
       inverted
       style={{
         fontSize: "1.7em",

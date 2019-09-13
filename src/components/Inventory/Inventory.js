@@ -3,7 +3,7 @@ import { Segment, Container, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { TopNav } from "../layout/TopNav";
 import { Footer } from "../layout/Footer";
-import Mazda from "../Homepage/mazda.jpg";
+import Mazda from "../Homepage/mazda2.jpg";
 import CarList from "./CarList";
 import InventoryHeader from "./InventoryHeader";
 import InventorySideNav from "./InventorySideNav";
@@ -39,7 +39,7 @@ class Inventory extends React.Component {
               inverted
               textAlign="center"
               style={{
-                minHeight: 500,
+                minHeight: 600,
                 padding: "1em 0em",
                 backgroundImage: `url(${Mazda})`
               }}

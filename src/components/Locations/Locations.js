@@ -3,7 +3,7 @@ import { Segment, Container, Grid } from "semantic-ui-react";
 import LocationList from "./LocationList";
 import { TopNav } from "../layout/TopNav";
 import { Footer } from "../layout/Footer";
-import Mazda from "../Homepage/mazda.jpg";
+import Mazda from "../Homepage/mazda2.jpg";
 import LocationForm from "./LocationForm";
 import LocationsHeader from "./LocationsHeader";
 import LocationsSideNav from "./LocationsSideNav";
@@ -38,7 +38,7 @@ class Locations extends React.Component {
               inverted
               textAlign="center"
               style={{
-                minHeight: 500,
+                minHeight: 600,
                 padding: "1em 0em",
                 backgroundImage: `url(${Mazda})`
               }}
