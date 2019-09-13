@@ -1,48 +1,79 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Segment, Container, Header } from "semantic-ui-react";
+import { Segment, Container, Grid } from "semantic-ui-react";
 import LocationList from "./LocationList";
 import { TopNav } from "../layout/TopNav";
 import { Footer } from "../layout/Footer";
 import Mazda from "../Homepage/mazda.jpg";
 import LocationForm from "./LocationForm";
+import LocationsHeader from "./LocationsHeader";
+import LocationsSideNav from "./LocationsSideNav";
 
-const Locations = props => {
-  const containerStyle = {
+class Locations extends React.Component {
+  state = {
+    addLocation: false,
+    query: ""
+  };
+
+  addLocationClick = () => {
+    this.setState({ addLocation: !this.state.addLocation });
+  };
+
+  handleSearch = query => {
+    this.setState({ query: query });
+    console.log(this.state.query);
+  };
+
+  containerStyle = {
     backgroundColor: "rgba(255, 255, 255, 0.9)",
     borderRadius: "8px",
     padding: "20px"
   };
-  return (
-    <div>
-      <Segment
-        inverted
-        textAlign="center"
-        style={{
-          minHeight: 700,
-          padding: "1em 0em",
-          backgroundImage: `url(${Mazda})`
-        }}
-        vertical
-      >
-        <TopNav></TopNav>
-      </Segment>
-      <Container style={containerStyle}>
-        <Header as="h1">Locations</Header>
-        <button onClick={props.history.goBack}>Back</button>
-        <LocationList></LocationList>
-      </Container>
-      <LocationForm></LocationForm>
-      <Footer />
-    </div>
-  );
-};
 
-const mapStateToProps = state => {
-  return {
-    cars: state.cars,
-    locations: state.locations
-  };
-};
+  render() {
+    return (
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <Segment
+              inverted
+              textAlign="center"
+              style={{
+                minHeight: 500,
+                padding: "1em 0em",
+                backgroundImage: `url(${Mazda})`
+              }}
+              vertical
+            >
+              <TopNav history={this.props.history}></TopNav>
+              <LocationsHeader></LocationsHeader>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={2}>
+            <LocationsSideNav
+              addLocationClick={this.addLocationClick}
+              handleSearch={this.handleSearch}
+            ></LocationsSideNav>
+          </Grid.Column>
+          <Grid.Column width={14}>
+            <Container style={this.containerStyle}>
+              {!this.state.addLocation ? (
+                <LocationList query={this.state.query}></LocationList>
+              ) : (
+                <LocationForm></LocationForm>
+              )}
+            </Container>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <Footer />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
+  }
+}
 
-export default connect(mapStateToProps)(Locations);
+export default Locations;

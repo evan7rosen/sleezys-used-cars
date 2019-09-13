@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Icon, Image, List } from "semantic-ui-react";
+import { Card, Image, List } from "semantic-ui-react";
 import Map from "./map.jpg";
 
 const LocationItem = ({ location }) => (

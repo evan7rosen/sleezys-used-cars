@@ -1,5 +1,6 @@
 import React from "react";
 import { Segment, Container, Header, Button, Divider } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import { HomepageHeader } from "./HomepageHeader";
 import { Footer } from "../layout/Footer";
 import { TopNav } from "../layout/TopNav";
@@ -19,23 +20,25 @@ const Homepage = props => {
         }}
         vertical
       >
-        <TopNav />
+        <TopNav history={props.history} />
         <HomepageHeader />
       </Segment>
       <Segment style={{ padding: "8em 0em" }} vertical>
         <Container text>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            Breaking The Grid, Grabs Your Attention
+            Quality Cars
           </Header>
           <p style={{ fontSize: "1.33em" }}>
-            Instead of focusing on content creation and hard work, we have
-            learned how to master the art of doing nothing by providing massive
-            amounts of whitespace and generic content that can seem massive,
-            monolithic and worth your attention.
+            We pride ourselves on our product. It's also why not every car has
+            what it takes to be a Sleezy's car. Click the link below to view
+            Sleezy's quality automobiles.
           </p>
-          <Button as="a" size="large">
-            Read More
-          </Button>
+          <Link to={"/inventory"}>
+            <Button as="a" size="large">
+              View our Inventory
+            </Button>
+          </Link>
+
           <Divider
             as="h4"
             className="header"
@@ -43,17 +46,19 @@ const Homepage = props => {
             style={{ margin: "3em 0em", textTransform: "uppercase" }}
           ></Divider>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            Did We Tell You About Our Bananas?
+            Many Convenient Locations to Serve You
           </Header>
           <p style={{ fontSize: "1.33em" }}>
-            Yes I know you probably disregarded the earlier boasts as
-            non-sequitur filler content, but it's really true. It took years of
-            gene splicing and combinatory DNA research, but our bananas can
-            really dance.
+            With 21 convenient locations across the United States, Sleezy's Used
+            Cars continues to be the premier destination for all things
+            automotive. It’s our signature quality, world-class pricing and VIP
+            customer service that makes customers for life.
           </p>
-          <Button as="a" size="large">
-            I'm Still Quite Interested
-          </Button>
+          <Link to={"/locations"}>
+            <Button as="a" size="large">
+              View our Locations
+            </Button>
+          </Link>
         </Container>
       </Segment>
       <Footer />

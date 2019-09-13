@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header } from "semantic-ui-react";
 
-export const HomepageHeader = () => (
+const LocationsHeader = () => (
   <Container text>
     <Header
       as="h1"
@@ -16,7 +16,7 @@ export const HomepageHeader = () => (
     />
     <Header
       as="h2"
-      content="Arizona's Repo Specialists"
+      content="Dealership Locations"
       inverted
       style={{
         fontSize: "1.7em",
@@ -26,3 +26,5 @@ export const HomepageHeader = () => (
     />
   </Container>
 );
+
+export default LocationsHeader;
