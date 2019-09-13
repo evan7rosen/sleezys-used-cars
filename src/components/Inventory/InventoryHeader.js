@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header } from "semantic-ui-react";
 
-export const HomepageHeader = () => (
+const InventoryHeader = () => (
   <Container text>
     <Header
       as="h1"
@@ -26,3 +26,5 @@ export const HomepageHeader = () => (
     />
   </Container>
 );
+
+export default InventoryHeader;
