@@ -14,6 +14,13 @@ class InventorySideNav extends Component {
 
     return (
       <Menu vertical style={{ padding: "20px" }}>
+        <Menu.Item>
+          <Input
+            icon="search"
+            placeholder="Search cars..."
+            onChange={e => this.props.handleSearch(e.target.value)}
+          />
+        </Menu.Item>
         <Menu.Header>Locations</Menu.Header>
         <Menu.Menu>
           <Menu.Item
@@ -90,13 +97,6 @@ class InventorySideNav extends Component {
           }}
         >
           Add New Car
-        </Menu.Item>
-        <Menu.Item>
-          <Input
-            icon="search"
-            placeholder="Search cars..."
-            onChange={e => this.props.handleSearch(e.target.value)}
-          />
         </Menu.Item>
       </Menu>
     );

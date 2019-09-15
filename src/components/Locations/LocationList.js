@@ -9,7 +9,12 @@ const LocationList = props => {
     .filter(location =>
       location.name.toLowerCase().includes(props.query.toLowerCase())
     )
-    .map(location => <LocationItem location={location} />);
+    .map(location => (
+      <LocationItem
+        location={location}
+        editLocationClick={props.editLocationClick}
+      />
+    ));
   return <Card.Group itemsPerRow={5}>{listOfLocations}</Card.Group>;
 };
 

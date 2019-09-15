@@ -7,10 +7,12 @@ import Mazda from "../Homepage/mazda2.jpg";
 import LocationForm from "./LocationForm";
 import LocationsHeader from "./LocationsHeader";
 import LocationsSideNav from "./LocationsSideNav";
+import EditLocationForm from "./EditLocationForm";
 
 class Locations extends React.Component {
   state = {
     addLocation: false,
+    editLocation: false,
     query: ""
   };
 
@@ -18,9 +20,12 @@ class Locations extends React.Component {
     this.setState({ addLocation: !this.state.addLocation });
   };
 
+  editLocationClick = () => {
+    this.setState({ editLocation: !this.state.editLocation });
+  };
+
   handleSearch = query => {
     this.setState({ query: query });
-    console.log(this.state.query);
   };
 
   containerStyle = {
@@ -58,10 +63,17 @@ class Locations extends React.Component {
           </Grid.Column>
           <Grid.Column width={14}>
             <Container style={this.containerStyle}>
-              {!this.state.addLocation ? (
-                <LocationList query={this.state.query}></LocationList>
-              ) : (
+              {!this.state.addLocation && !this.state.editLocation ? (
+                <LocationList
+                  query={this.state.query}
+                  editLocationClick={this.editLocationClick}
+                ></LocationList>
+              ) : this.state.addLocation ? (
                 <LocationForm></LocationForm>
+              ) : (
+                <EditLocationForm
+                  editLocationClick={this.editLocationClick}
+                ></EditLocationForm>
               )}
             </Container>
           </Grid.Column>

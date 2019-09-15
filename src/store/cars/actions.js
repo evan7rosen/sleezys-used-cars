@@ -12,7 +12,6 @@ export const fetchAllCars = () => async dispatch => {
       type: types.FETCH_ALL_CARS_SUCCESS,
       payload: response.data
     });
-    console.log("fetch cars", response.data);
   } catch (err) {
     dispatch({
       type: types.FETCH_ALL_CARS_FAILED,
@@ -39,16 +38,17 @@ export const addCar = newCar => async dispatch => {
   }
 };
 
-export const removeCar = selectedCar => async dispatch => {
+export const removeCar = id => async dispatch => {
   dispatch({
     type: types.REMOVE_CAR_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, selectedCar);
+    let response = await axios.delete(BASE_URL + `/${id}`);
     dispatch({
       type: types.REMOVE_CAR_SUCCESS,
-      payload: response.data
+      payload: id
     });
+    console.log(response.data);
   } catch (err) {
     dispatch({
       type: types.REMOVE_CAR_FAILED,
@@ -57,12 +57,12 @@ export const removeCar = selectedCar => async dispatch => {
   }
 };
 
-export const editCar = updatedCar => async dispatch => {
+export const editCar = (updatedCar, id) => async dispatch => {
   dispatch({
     type: types.EDIT_CAR_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, updatedCar);
+    let response = await axios.patch(BASE_URL + `/${id}`, updatedCar);
     dispatch({
       type: types.EDIT_CAR_SUCCESS,
       payload: response.data

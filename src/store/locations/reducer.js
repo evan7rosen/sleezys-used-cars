@@ -40,13 +40,16 @@ export default (state = initialState, action) => {
     case types.REMOVE_LOCATION_SUCCESS:
       return {
         ...state,
-        all: state.all.filter(status => status.id === action.payload.id)
+        all: state.all.filter(location => location.id !== action.payload)
       };
 
     case types.EDIT_LOCATION_SUCCESS:
       return {
         ...state,
-        all: [action.payload, ...state.all]
+        all: [
+          action.payload,
+          ...state.all.filter(location => location.id !== action.payload.id)
+        ]
       };
 
     case types.SELECT_LOCATION_SUCCESS:

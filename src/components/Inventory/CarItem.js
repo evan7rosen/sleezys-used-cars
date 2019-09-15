@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Icon, Item, Label, List } from "semantic-ui-react";
 import { connect } from "react-redux";
 import imgSrc from "./image.png";
+import { removeCar, selectCar } from "../../store/cars/actions";
 
 const CarItem = props => {
   const carLocation = props.locations.all.filter(
@@ -23,9 +24,28 @@ const CarItem = props => {
           </List>
         </Item.Description>
         <Item.Extra>
-          <Button primary floated="right">
+          <Button
+            floated="right"
+            color="red"
+            onClick={() => props.removeCar(props.car.id)}
+          >
+            Delete
+            <Icon name="right delete" />
+          </Button>
+          <Button
+            primary
+            floated="right"
+            onClick={() => {
+              props.selectCar(props.car);
+              props.editCarClick();
+            }}
+          >
+            Edit
+            <Icon name="right edit" />
+          </Button>
+          <Button floated="right" color="green">
             Purchase this Vehicle
-            <Icon name="right chevron" />
+            <Icon name="right dollar" />
           </Button>
           <Label icon="map marker" content={carLocation.name} />
         </Item.Extra>
@@ -36,8 +56,15 @@ const CarItem = props => {
 
 const mapStateToProps = state => {
   return {
-    locations: state.locations
+    locations: state.locations,
+    cars: state.cars
   };
 };
 
-export default connect(mapStateToProps)(CarItem);
+export default connect(
+  mapStateToProps,
+  {
+    removeCar,
+    selectCar
+  }
+)(CarItem);

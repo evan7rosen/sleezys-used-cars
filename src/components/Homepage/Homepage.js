@@ -7,7 +7,6 @@ import { TopNav } from "../layout/TopNav";
 import Mazda from "./mazda2.jpg";
 
 const Homepage = props => {
-  console.log("Homepage props", props);
   return (
     <div>
       <Segment

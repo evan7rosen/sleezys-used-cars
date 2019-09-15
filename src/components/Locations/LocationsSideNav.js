@@ -14,6 +14,13 @@ class LocationsSideNav extends Component {
 
     return (
       <Menu vertical style={{ marginTop: "20px" }}>
+        <Menu.Item>
+          <Input
+            icon="search"
+            placeholder="Search locations..."
+            onChange={e => this.props.handleSearch(e.target.value)}
+          />
+        </Menu.Item>
         <Menu.Item
           name="locations"
           active={activeItem === "locations"}
@@ -40,13 +47,6 @@ class LocationsSideNav extends Component {
           onClick={this.handleItemClick}
         >
           Edit Location
-        </Menu.Item>
-        <Menu.Item>
-          <Input
-            icon="search"
-            placeholder="Search locations..."
-            onChange={e => this.props.handleSearch(e.target.value)}
-          />
         </Menu.Item>
       </Menu>
     );

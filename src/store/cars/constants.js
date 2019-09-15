@@ -18,4 +18,4 @@ export const SELECT_CAR_PENDING = "SELECT_CAR_PENDING";
 export const SELECT_CAR_SUCCESS = "SELECT_CAR_SUCCESS";
 export const SELECT_CAR_FAILED = "SELECT_CAR_FAILED";
 
-export const BASE_URL = `http://localhost:8082/api/stealership/cars/`;
+export const BASE_URL = `http://localhost:8082/api/stealership/cars`;

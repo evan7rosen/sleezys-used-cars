@@ -8,10 +8,12 @@ import CarList from "./CarList";
 import InventoryHeader from "./InventoryHeader";
 import InventorySideNav from "./InventorySideNav";
 import NewCarForm from "./NewCarForm";
+import EditCarForm from "./EditCarForm";
 
 class Inventory extends React.Component {
   state = {
     addCar: false,
+    editCar: false,
     query: "",
     selectedLocationId: { id: 0 }
   };
@@ -20,14 +22,16 @@ class Inventory extends React.Component {
     this.setState({ addCar: !this.state.addCar });
   };
 
+  editCarClick = () => {
+    this.setState({ editCar: !this.state.editCar });
+  };
+
   selectLocationClick = locationId => {
     this.setState({ selectedLocationId: locationId });
-    console.log("click", this.state.selectedLocationId);
   };
 
   handleSearch = query => {
     this.setState({ query: query });
-    console.log(this.state.query);
   };
 
   render() {
@@ -60,13 +64,17 @@ class Inventory extends React.Component {
           </Grid.Column>
           <Grid.Column width={14}>
             <Container style={this.containerStyle}>
-              {!this.state.addLocation ? (
+              {!this.state.addCar && !this.state.editCar ? (
                 <CarList
                   query={this.state.query}
                   selectedLocationId={this.state.selectedLocationId}
+                  viewSold={this.state.viewsold}
+                  editCarClick={this.editCarClick}
                 ></CarList>
+              ) : this.state.addCar ? (
+                <NewCarForm addCarClick={this.addCarClick}></NewCarForm>
               ) : (
-                <NewCarForm></NewCarForm>
+                <EditCarForm editCarClick={this.editCarClick}></EditCarForm>
               )}
             </Container>
           </Grid.Column>

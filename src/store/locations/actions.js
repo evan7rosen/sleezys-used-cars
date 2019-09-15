@@ -39,16 +39,17 @@ export const addLocation = newLocation => async dispatch => {
   }
 };
 
-export const removeLocation = selectedLocation => async dispatch => {
+export const removeLocation = id => async dispatch => {
   dispatch({
     type: types.REMOVE_LOCATION_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, selectedLocation);
+    let response = await axios.delete(BASE_URL + `/${id}`);
     dispatch({
       type: types.REMOVE_LOCATION_SUCCESS,
-      payload: response.data
+      payload: id
     });
+    console.log(response.data);
   } catch (err) {
     dispatch({
       type: types.REMOVE_LOCATION_FAILED,
@@ -57,12 +58,12 @@ export const removeLocation = selectedLocation => async dispatch => {
   }
 };
 
-export const editLocation = updatedLocation => async dispatch => {
+export const editLocation = (updatedLocation, id) => async dispatch => {
   dispatch({
     type: types.EDIT_LOCATION_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, updatedLocation);
+    let response = await axios.patch(BASE_URL + `/${id}`, updatedLocation);
     dispatch({
       type: types.EDIT_LOCATION_SUCCESS,
       payload: response.data

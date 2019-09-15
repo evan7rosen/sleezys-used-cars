@@ -15,25 +15,28 @@ const CarList = props => {
     padding: "20px"
   };
 
-  const listOfCars = props.cars.all
-    .filter(car =>
-      car.is_sold === false &&
-      (car.year.toString().includes(props.query) ||
+  const locationFilter = props.cars.all.filter(car =>
+    car.is_sold === false && props.selectedLocationId.id === 0
+      ? car.location_id > 0
+      : car.location_id === props.selectedLocationId
+  );
+
+  const searchFilter = locationFilter
+    .filter(
+      car =>
+        car.year.toString().includes(props.query) ||
         car.make.toLowerCase().includes(props.query.toLowerCase()) ||
-        car.model.toLowerCase().includes(props.query.toLowerCase())) &&
-      props.selectedLocationId.id === 0
-        ? car.location_id > 0
-        : car.location_id === props.selectedLocationId
+        car.model.toLowerCase().includes(props.query.toLowerCase())
     )
-    .map(car => <CarItem car={car} />);
+    .map(car => <CarItem car={car} editCarClick={props.editCarClick} />);
 
   return (
     <Container style={containerStyle}>
       <Header as="h1">
-        {listOfCars.length} vehicles available at
-        {selectedLocation ? selectedLocation.name : " All Locations"}
+        {searchFilter.length} vehicles available at
+        {selectedLocation ? " " + selectedLocation.name : " All Locations"}
       </Header>
-      <Item.Group divided> {listOfCars}</Item.Group>
+      <Item.Group divided> {searchFilter}</Item.Group>
     </Container>
   );
 };

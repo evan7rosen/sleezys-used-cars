@@ -8,30 +8,28 @@ import {
   Header,
   Select
 } from "semantic-ui-react";
-import { addCar } from "../../store/cars/actions";
+import { editCar } from "../../store/cars/actions";
 
-class NewCarForm extends Component {
+class EditCarForm extends Component {
   state = {
-    make: "",
-    model: "",
-    year: "",
-    vin: "",
-    miles: "",
-    price: "",
-    location_id: 7,
-    is_sold: false
+    make: this.props.cars.selectedCar.make,
+    model: this.props.cars.selectedCar.model,
+    year: this.props.cars.selectedCar.year,
+    vin: this.props.cars.selectedCar.vin,
+    miles: this.props.cars.selectedCar.miles,
+    price: this.props.cars.selectedCar.price,
+    location_id: this.props.cars.selectedCar.location_id,
+    is_sold: this.props.cars.selectedCar.is_sold
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addCar(this.state);
-    this.setState({});
-    this.props.addCarClick();
+    this.props.editCar(this.state, this.props.cars.selectedCar.id);
+    this.props.editCarClick();
   };
 
   options = [
@@ -47,7 +45,7 @@ class NewCarForm extends Component {
   render() {
     return (
       <Container style={{ padding: "20px" }}>
-        <Header as="h1">Add New Car</Header>
+        <Header as="h1">Edit Car</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Field
@@ -129,6 +127,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    addCar
+    editCar
   }
-)(NewCarForm);
+)(EditCarForm);
