@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Menu } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class InventorySideNav extends Component {
   state = { activeItem: "locations" };
@@ -120,3 +121,11 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(InventorySideNav);
+
+InventorySideNav.propTypes = {
+  locations: PropTypes.object.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  selectLocationClick: PropTypes.func.isRequired,
+  addCarClick: PropTypes.func.isRequired,
+  viewSoldClick: PropTypes.func.isRequired
+};

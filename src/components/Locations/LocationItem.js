@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Image, List, Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Map from "./map.jpg";
 import { removeLocation, selectLocation } from "../../store/locations/actions";
 import { Link } from "react-router-dom";
@@ -26,6 +27,7 @@ const LocationItem = props => (
         <List.Item>
           <Link to={"/inventory"}>
             <Button
+              fluid
               size="mini"
               onClick={() => props.selectLocation(props.location)}
             >
@@ -35,6 +37,7 @@ const LocationItem = props => (
         </List.Item>
         <List.Item>
           <Button
+            fluid
             size="mini"
             onClick={() => {
               props.selectLocation(props.location);
@@ -46,6 +49,7 @@ const LocationItem = props => (
         </List.Item>
         <List.Item>
           <Button
+            fluid
             size="mini"
             onClick={() => props.removeLocation(props.location.id)}
           >
@@ -71,3 +75,12 @@ export default connect(
     selectLocation
   }
 )(LocationItem);
+
+LocationItem.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  selectLocation: PropTypes.func.isRequired,
+  editLocationClick: PropTypes.func.isRequired,
+  removeLocation: PropTypes.func.isRequired
+};

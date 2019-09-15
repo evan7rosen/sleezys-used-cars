@@ -1,6 +1,7 @@
 import React from "react";
 import { Item, Container, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import CarItem from "./CarItem";
 import { addCar } from "../../store/cars/actions";
 
@@ -32,7 +33,9 @@ const CarList = props => {
         car.make.toLowerCase().includes(props.query.toLowerCase()) ||
         car.model.toLowerCase().includes(props.query.toLowerCase())
     )
-    .map(car => <CarItem car={car} editCarClick={props.editCarClick} />);
+    .map(car => (
+      <CarItem car={car} editCarClick={props.editCarClick} key={car.id} />
+    ));
 
   return (
     <Container style={containerStyle}>
@@ -61,3 +64,12 @@ export default connect(
     addCar
   }
 )(CarList);
+
+CarList.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  addCar: PropTypes.func.isRequired,
+  editCarClick: PropTypes.func.isRequired,
+  viewSold: PropTypes.bool.isRequired,
+  selectedLocationId: PropTypes.object.isRequired
+};

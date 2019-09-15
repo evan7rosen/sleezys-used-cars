@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   Button,
@@ -132,3 +133,10 @@ export default connect(
     addCar
   }
 )(NewCarForm);
+
+NewCarForm.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  addCar: PropTypes.func.isRequired,
+  addCarClick: PropTypes.func.isRequired
+};

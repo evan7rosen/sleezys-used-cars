@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Button, Form } from "semantic-ui-react";
 import { addLocation } from "../../store/locations/actions";
 
@@ -15,18 +16,17 @@ class LocationForm extends Component {
       target: { name, value }
     } = event;
     this.setState({ [name]: value });
-    console.log("form", this.state);
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.addLocation(this.state);
-    console.log("submitted", this.state);
     this.setState({
       name: "",
       phone: "",
       address: ""
     });
+    this.props.addLocationClick();
   };
 
   render() {
@@ -64,6 +64,9 @@ class LocationForm extends Component {
           />
         </Form.Field>
         <Button type="submit">Submit</Button>
+        <Button type="cancel" onClick={this.props.addLocationClick}>
+          Cancel
+        </Button>
       </Form>
     );
   }
@@ -82,3 +85,10 @@ export default connect(
     addLocation
   }
 )(LocationForm);
+
+LocationForm.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  addLocation: PropTypes.func.isRequired,
+  addLocationClick: PropTypes.func.isRequired
+};

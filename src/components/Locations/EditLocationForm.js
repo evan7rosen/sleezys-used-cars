@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Button, Form } from "semantic-ui-react";
 import { editLocation } from "../../store/locations/actions";
 
-class LocationForm extends Component {
+class EditLocationForm extends Component {
   state = {
     name: this.props.locations.selectedLocation.name,
     phone: this.props.locations.selectedLocation.phone,
@@ -58,6 +59,9 @@ class LocationForm extends Component {
           />
         </Form.Field>
         <Button type="submit">Submit</Button>
+        <Button type="cancel" onClick={this.props.editLocationClick}>
+          Cancel
+        </Button>
       </Form>
     );
   }
@@ -75,4 +79,11 @@ export default connect(
   {
     editLocation
   }
-)(LocationForm);
+)(EditLocationForm);
+
+EditLocationForm.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  editLocation: PropTypes.func.isRequired,
+  editLocationClick: PropTypes.func.isRequired
+};

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   Button,
   Form,
@@ -130,3 +131,10 @@ export default connect(
     editCar
   }
 )(EditCarForm);
+
+EditCarForm.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  editCar: PropTypes.func.isRequired,
+  editCarClick: PropTypes.func.isRequired
+};

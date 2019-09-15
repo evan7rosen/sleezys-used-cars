@@ -70,7 +70,9 @@ class Locations extends React.Component {
                   selectLocationClick={this.selectLocationClick}
                 ></LocationList>
               ) : this.state.addLocation ? (
-                <LocationForm></LocationForm>
+                <LocationForm
+                  addLocationClick={this.addLocationClick}
+                ></LocationForm>
               ) : (
                 <EditLocationForm
                   editLocationClick={this.editLocationClick}

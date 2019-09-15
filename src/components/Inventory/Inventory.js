@@ -1,6 +1,7 @@
 import React from "react";
 import { Segment, Container, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { TopNav } from "../layout/TopNav";
 import { Footer } from "../layout/Footer";
 import Mazda from "../Homepage/mazda2.jpg";
@@ -104,3 +105,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Inventory);
+
+Inventory.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired
+};

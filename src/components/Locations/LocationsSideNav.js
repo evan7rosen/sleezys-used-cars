@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Label, Menu } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class LocationsSideNav extends Component {
   state = { activeItem: "locations" };
@@ -60,3 +61,9 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(LocationsSideNav);
+
+LocationsSideNav.propTypes = {
+  locations: PropTypes.object.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  addLocationClick: PropTypes.func.isRequired
+};

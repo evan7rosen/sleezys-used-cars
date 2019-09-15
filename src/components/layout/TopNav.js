@@ -1,27 +1,25 @@
 import React from "react";
 import { Button, Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const TopNav = props => (
   <Menu inverted secondary size="large">
     <Link to={"/"}>
-      <Menu.Item as="a">Home</Menu.Item>
+      <Menu.Item>Home</Menu.Item>
     </Link>
 
     <Link to={"/locations"}>
-      <Menu.Item as="a">Locations</Menu.Item>
+      <Menu.Item>Locations</Menu.Item>
     </Link>
 
     <Link to={"/inventory"}>
-      <Menu.Item as="a">Inventory</Menu.Item>
+      <Menu.Item>Inventory</Menu.Item>
     </Link>
 
     <Menu.Item position="right" onClick={props.history.goBack}>
-      <Button as="a" inverted>
-        Back
-      </Button>
+      <Button inverted>Back</Button>
       <Button
-        as="a"
         inverted
         primary
         style={{ marginLeft: "0.5em" }}
@@ -32,3 +30,7 @@ export const TopNav = props => (
     </Menu.Item>
   </Menu>
 );
+
+TopNav.propTypes = {
+  history: PropTypes.object.isRequired
+};

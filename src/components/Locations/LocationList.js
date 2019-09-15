@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import LocationItem from "./LocationItem";
 import { addLocation } from "../../store/locations/actions";
 
@@ -16,7 +17,7 @@ const LocationList = props => {
         selectLocationClick={props.selectLocationClick}
       />
     ));
-  return <Card.Group itemsPerRow={5}>{listOfLocations}</Card.Group>;
+  return <Card.Group itemsPerRow={4}>{listOfLocations}</Card.Group>;
 };
 
 const mapStateToProps = state => {
@@ -31,3 +32,11 @@ export default connect(
     addLocation
   }
 )(LocationList);
+
+LocationList.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  selectLocationClick: PropTypes.func.isRequired,
+  editLocationClick: PropTypes.func.isRequired,
+  addLocation: PropTypes.func.isRequired
+};

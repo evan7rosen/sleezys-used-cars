@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Icon, Item, Label, List } from "semantic-ui-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import imgSrc from "./image.png";
 import { removeCar, selectCar, editCar } from "../../store/cars/actions";
 
@@ -22,7 +23,7 @@ class CarItem extends React.Component {
 
   render() {
     return (
-      <Item>
+      <Item key={this.props.car.id}>
         <Item.Image src={imgSrc} />
         <Item.Content>
           <Item.Header as="a">
@@ -43,14 +44,18 @@ class CarItem extends React.Component {
           </Item.Description>
           <Item.Extra>
             <Button
+              icon
+              labelPosition="right"
               floated="right"
               color="red"
               onClick={() => this.props.removeCar(this.props.car.id)}
             >
               Delete
-              <Icon name="right delete" />
+              <Icon name="delete" />
             </Button>
             <Button
+              icon
+              labelPosition="right"
               primary
               floated="right"
               onClick={() => {
@@ -59,10 +64,12 @@ class CarItem extends React.Component {
               }}
             >
               Edit
-              <Icon name="right edit" />
+              <Icon name="edit" />
             </Button>
             {!this.props.car.is_sold ? (
               <Button
+                icon
+                labelPosition="right"
                 floated="right"
                 color="green"
                 onClick={() => {
@@ -71,10 +78,12 @@ class CarItem extends React.Component {
                 }}
               >
                 Purchase this Vehicle
-                <Icon name="right dollar" />
+                <Icon name="add to cart" />
               </Button>
             ) : (
               <Button
+                icon
+                labelPosition="right"
                 floated="right"
                 color="green"
                 onClick={() => {
@@ -82,8 +91,8 @@ class CarItem extends React.Component {
                   window.alert("25% Restocking Fee Applies");
                 }}
               >
-                Return this Vehicle
-                <Icon name="right dollar" />
+                Return this Vehicle {+" "}
+                <Icon name="remove from cart" />
               </Button>
             )}
             <Label icon="map marker" content={this.carLocation.name} />
@@ -109,3 +118,13 @@ export default connect(
     editCar
   }
 )(CarItem);
+
+CarItem.propTypes = {
+  locations: PropTypes.object.isRequired,
+  cars: PropTypes.object.isRequired,
+  removeCar: PropTypes.func.isRequired,
+  selectCar: PropTypes.func.isRequired,
+  editCar: PropTypes.func.isRequired,
+  editCarClick: PropTypes.func.isRequired,
+  car: PropTypes.object.isRequired
+};

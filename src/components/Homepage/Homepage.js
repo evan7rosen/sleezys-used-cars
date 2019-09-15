@@ -1,6 +1,7 @@
 import React from "react";
 import { Segment, Container, Header, Button, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { HomepageHeader } from "./HomepageHeader";
 import { Footer } from "../layout/Footer";
 import { TopNav } from "../layout/TopNav";
@@ -22,7 +23,7 @@ const Homepage = props => {
         <TopNav history={props.history} />
         <HomepageHeader />
       </Segment>
-      <Segment style={{ padding: "2em 0em" }} vertical>
+      <Segment style={{ padding: "4em 0em" }} vertical>
         <Container text>
           <Header as="h3" style={{ fontSize: "2em" }}>
             Quality Cars
@@ -33,9 +34,7 @@ const Homepage = props => {
             Sleezy's quality automobiles.
           </p>
           <Link to={"/inventory"}>
-            <Button as="a" size="large">
-              View our Inventory
-            </Button>
+            <Button size="large">View our Inventory</Button>
           </Link>
 
           <Divider
@@ -54,9 +53,7 @@ const Homepage = props => {
             customer service that makes customers for life.
           </p>
           <Link to={"/locations"}>
-            <Button as="a" size="large">
-              View our Locations
-            </Button>
+            <Button size="large">View our Locations</Button>
           </Link>
         </Container>
       </Segment>
@@ -66,3 +63,7 @@ const Homepage = props => {
 };
 
 export default Homepage;
+
+Homepage.propTypes = {
+  history: PropTypes.object.isRequired
+};
