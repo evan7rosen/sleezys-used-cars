@@ -15,8 +15,12 @@ const CarList = props => {
     padding: "20px"
   };
 
-  const locationFilter = props.cars.all.filter(car =>
-    car.is_sold === false && props.selectedLocationId.id === 0
+  const soldFilter = props.cars.all.filter(
+    car => car.is_sold === props.viewSold
+  );
+
+  const locationFilter = soldFilter.filter(car =>
+    props.selectedLocationId.id === 0
       ? car.location_id > 0
       : car.location_id === props.selectedLocationId
   );
@@ -33,8 +37,11 @@ const CarList = props => {
   return (
     <Container style={containerStyle}>
       <Header as="h1">
-        {searchFilter.length} vehicles available at
-        {selectedLocation ? " " + selectedLocation.name : " All Locations"}
+        {!props.viewSold
+          ? `${searchFilter.length} vehicles available at
+        ${selectedLocation ? " " + selectedLocation.name : " All Locations"}`
+          : `${searchFilter.length} vehicles already sold at
+        ${selectedLocation ? " " + selectedLocation.name : " All Locations"}`}
       </Header>
       <Item.Group divided> {searchFilter}</Item.Group>
     </Container>

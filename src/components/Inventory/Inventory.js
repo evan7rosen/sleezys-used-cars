@@ -14,6 +14,7 @@ class Inventory extends React.Component {
   state = {
     addCar: false,
     editCar: false,
+    viewSold: false,
     query: "",
     selectedLocationId: { id: 0 }
   };
@@ -24,6 +25,10 @@ class Inventory extends React.Component {
 
   editCarClick = () => {
     this.setState({ editCar: !this.state.editCar });
+  };
+
+  viewSoldClick = () => {
+    this.setState({ viewSold: !this.state.viewSold });
   };
 
   selectLocationClick = locationId => {
@@ -60,6 +65,8 @@ class Inventory extends React.Component {
               addCarClick={this.addCarClick}
               handleSearch={this.handleSearch}
               selectLocationClick={this.selectLocationClick}
+              viewSoldClick={this.viewSoldClick}
+              viewSold={this.state.viewSold}
             ></InventorySideNav>
           </Grid.Column>
           <Grid.Column width={14}>
@@ -68,7 +75,7 @@ class Inventory extends React.Component {
                 <CarList
                   query={this.state.query}
                   selectedLocationId={this.state.selectedLocationId}
-                  viewSold={this.state.viewsold}
+                  viewSold={this.state.viewSold}
                   editCarClick={this.editCarClick}
                 ></CarList>
               ) : this.state.addCar ? (

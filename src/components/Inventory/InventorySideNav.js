@@ -98,6 +98,16 @@ class InventorySideNav extends Component {
         >
           Add New Car
         </Menu.Item>
+        <Menu.Item
+          name="viewSold"
+          active={activeItem === "viewSold"}
+          onClick={(e, name) => {
+            this.handleItemClick(e, name);
+            this.props.viewSoldClick();
+          }}
+        >
+          {!this.props.viewSold ? "View Sold Cars" : "View Available Cars"}
+        </Menu.Item>
       </Menu>
     );
   }

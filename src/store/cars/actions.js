@@ -67,6 +67,7 @@ export const editCar = (updatedCar, id) => async dispatch => {
       type: types.EDIT_CAR_SUCCESS,
       payload: response.data
     });
+    console.log(response.data);
   } catch (err) {
     dispatch({
       type: types.EDIT_CAR_FAILED,
