@@ -3,6 +3,7 @@ import { Card, Image, List, Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Map from "./map.jpg";
 import { removeLocation, selectLocation } from "../../store/locations/actions";
+import { Link } from "react-router-dom";
 
 const LocationItem = props => (
   <Card key={props.location.id} style={{ color: "black" }}>
@@ -23,9 +24,14 @@ const LocationItem = props => (
     <Card.Content extra>
       <List>
         <List.Item>
-          <Button size="mini">
-            <Icon name="car"></Icon>View Inventory
-          </Button>
+          <Link to={"/inventory"}>
+            <Button
+              size="mini"
+              onClick={() => props.selectLocation(props.location)}
+            >
+              <Icon name="car"></Icon>View Inventory
+            </Button>
+          </Link>
         </List.Item>
         <List.Item>
           <Button

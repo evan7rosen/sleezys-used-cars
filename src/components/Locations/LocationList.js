@@ -13,6 +13,7 @@ const LocationList = props => {
       <LocationItem
         location={location}
         editLocationClick={props.editLocationClick}
+        selectLocationClick={props.selectLocationClick}
       />
     ));
   return <Card.Group itemsPerRow={5}>{listOfLocations}</Card.Group>;

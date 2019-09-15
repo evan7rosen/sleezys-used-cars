@@ -67,6 +67,7 @@ class Locations extends React.Component {
                 <LocationList
                   query={this.state.query}
                   editLocationClick={this.editLocationClick}
+                  selectLocationClick={this.selectLocationClick}
                 ></LocationList>
               ) : this.state.addLocation ? (
                 <LocationForm></LocationForm>
