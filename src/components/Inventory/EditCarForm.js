@@ -109,9 +109,10 @@ class EditCarForm extends Component {
             onChange={this.handleChange}
           />
 
-          <Form.Field type="submit" control={Button}>
-            Submit
-          </Form.Field>
+          <Button type="submit">Submit</Button>
+          <Button type="cancel" onClick={this.props.editCarClick}>
+            Cancel
+          </Button>
         </Form>
       </Container>
     );

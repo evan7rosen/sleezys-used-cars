@@ -14,7 +14,7 @@ const LocationList = props => {
       <LocationItem
         location={location}
         editLocationClick={props.editLocationClick}
-        selectLocationClick={props.selectLocationClick}
+        key={location.id}
       />
     ));
   return <Card.Group itemsPerRow={4}>{listOfLocations}</Card.Group>;
@@ -35,8 +35,6 @@ export default connect(
 
 LocationList.propTypes = {
   locations: PropTypes.object.isRequired,
-  cars: PropTypes.object.isRequired,
-  selectLocationClick: PropTypes.func.isRequired,
   editLocationClick: PropTypes.func.isRequired,
   addLocation: PropTypes.func.isRequired
 };

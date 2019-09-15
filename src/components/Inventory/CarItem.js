@@ -91,8 +91,8 @@ class CarItem extends React.Component {
                   window.alert("25% Restocking Fee Applies");
                 }}
               >
-                Return this Vehicle {+" "}
-                <Icon name="remove from cart" />
+                Return this Vehicle
+                <Icon name="remove circle" />
               </Button>
             )}
             <Label icon="map marker" content={this.carLocation.name} />

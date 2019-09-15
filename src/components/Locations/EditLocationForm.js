@@ -20,7 +20,10 @@ class EditLocationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.editLocation(this.state);
+    this.props.editLocation(
+      this.state,
+      this.props.locations.selectedLocation.id
+    );
     this.props.editLocationClick();
   };
 

@@ -110,10 +110,10 @@ class NewCarForm extends Component {
             name="location_id"
             onChange={this.handleChange}
           />
-
-          <Form.Field type="submit" control={Button}>
-            Submit
-          </Form.Field>
+          <Button type="submit">Submit</Button>
+          <Button type="cancel" onClick={this.props.addCarClick}>
+            Cancel
+          </Button>
         </Form>
       </Container>
     );

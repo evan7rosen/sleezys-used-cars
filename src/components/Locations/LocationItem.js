@@ -3,7 +3,11 @@ import { Card, Image, List, Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Map from "./map.jpg";
-import { removeLocation, selectLocation } from "../../store/locations/actions";
+import {
+  removeLocation,
+  selectLocation,
+  editLocation
+} from "../../store/locations/actions";
 import { Link } from "react-router-dom";
 
 const LocationItem = props => (
@@ -72,7 +76,8 @@ export default connect(
   mapStateToProps,
   {
     removeLocation,
-    selectLocation
+    selectLocation,
+    editLocation
   }
 )(LocationItem);
 
